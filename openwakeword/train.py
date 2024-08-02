@@ -702,14 +702,8 @@ if __name__ == '__main__':
         n_current_samples = len(os.listdir(negative_train_output_dir))
         if n_current_samples <= 0.95*config["n_samples"]:
             adversarial_texts = config["custom_negative_phrases"]
-            for target_phrase in config["target_phrase"]:
-                adversarial_texts.extend(generate_adversarial_texts(
-                    input_text=target_phrase,
-                    N=config["n_samples"]//len(config["target_phrase"]),
-                    include_partial_phrase=1.0,
-                    include_input_words=0.2))
             generate_samples(text=adversarial_texts, max_samples=config["n_samples"]-n_current_samples,
-                             batch_size=config["tts_batch_size"]//7,
+                             batch_size=config["tts_batch_size"],
                              model = config["generator_model"],
                              min_phoneme_count=config["min_phoneme_count"], 
                              noise_scales=config["noise_scales_train"],
@@ -729,14 +723,8 @@ if __name__ == '__main__':
         n_current_samples = len(os.listdir(negative_test_output_dir))
         if n_current_samples <= 0.95*config["n_samples_val"]:
             adversarial_texts = config["custom_negative_phrases"]
-            for target_phrase in config["target_phrase"]:
-                adversarial_texts.extend(generate_adversarial_texts(
-                    input_text=target_phrase,
-                    N=config["n_samples_val"]//len(config["target_phrase"]),
-                    include_partial_phrase=1.0,
-                    include_input_words=0.2))
             generate_samples(text=adversarial_texts, max_samples=config["n_samples_val"]-n_current_samples,
-                             batch_size=config["tts_batch_size"]//7,
+                             batch_size=config["tts_batch_size"],
                              model = config["generator_model"],
                              min_phoneme_count=config["min_phoneme_count"], 
                              noise_scales=config["noise_scales_test"],
