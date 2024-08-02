@@ -166,7 +166,7 @@ class Model(nn.Module):
 
     def lr_warmup_cosine_decay(self,
                                global_step,
-                               warmup_steps=1,
+                               warmup_steps=0,
                                hold=0,
                                total_steps=0,
                                start_lr=0.0,
@@ -279,8 +279,8 @@ class Model(nn.Module):
                     false_positive_val_data=false_positive_val_data,
                     max_steps=steps,
                     negative_weight_schedule=weights,
-                    val_steps=val_steps, warmup_steps=steps//5,
-                    hold_steps=steps//3, lr=lr, val_set_hrs=val_set_hrs)
+                    val_steps=val_steps, warmup_steps=val_steps,
+                    hold_steps=val_steps, lr=lr, val_set_hrs=val_set_hrs)
 
         # Sequence 2
         logging.info("#"*50 + "\nStarting training sequence 2...\n" + "#"*50)
@@ -300,8 +300,8 @@ class Model(nn.Module):
                     false_positive_val_data=false_positive_val_data,
                     max_steps=steps,
                     negative_weight_schedule=weights,
-                    val_steps=val_steps, warmup_steps=steps//5,
-                    hold_steps=steps//3, lr=lr, val_set_hrs=val_set_hrs)
+                    val_steps=val_steps, warmup_steps=val_steps,
+                    hold_steps=val_steps, lr=lr, val_set_hrs=val_set_hrs)
 
         # Sequence 3
         logging.info("#"*50 + "\nStarting training sequence 3...\n" + "#"*50)
@@ -320,8 +320,8 @@ class Model(nn.Module):
                     false_positive_val_data=false_positive_val_data,
                     max_steps=steps,
                     negative_weight_schedule=weights,
-                    val_steps=val_steps, warmup_steps=steps//5,
-                    hold_steps=steps//3, lr=lr, val_set_hrs=val_set_hrs)
+                    val_steps=val_steps, warmup_steps=val_steps,
+                    hold_steps=val_steps, lr=lr, val_set_hrs=val_set_hrs)
 
         # Merge best models
         logging.info("Merging checkpoints above the 90th percentile into single model...")
