@@ -166,7 +166,7 @@ class Model(nn.Module):
 
     def lr_warmup_cosine_decay(self,
                                global_step,
-                               warmup_steps=0,
+                               warmup_steps=1,
                                hold=0,
                                total_steps=0,
                                start_lr=0.0,
