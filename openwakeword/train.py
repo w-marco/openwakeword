@@ -279,8 +279,8 @@ class Model(nn.Module):
                     false_positive_val_data=false_positive_val_data,
                     max_steps=steps,
                     negative_weight_schedule=weights,
-                    val_steps=val_steps, warmup_steps=val_steps,
-                    hold_steps=val_steps, lr=lr, val_set_hrs=val_set_hrs)
+                    val_steps=val_steps, warmup_steps=(steps-int(steps*0.25)),
+                    hold_steps=(steps-int(steps*0.25)), lr=lr, val_set_hrs=val_set_hrs)
 
         # Sequence 2
         logging.info("#"*50 + "\nStarting training sequence 2...\n" + "#"*50)
@@ -300,8 +300,8 @@ class Model(nn.Module):
                     false_positive_val_data=false_positive_val_data,
                     max_steps=steps,
                     negative_weight_schedule=weights,
-                    val_steps=val_steps, warmup_steps=val_steps,
-                    hold_steps=val_steps, lr=lr, val_set_hrs=val_set_hrs)
+                    val_steps=val_steps, warmup_steps=(steps-int(steps*0.25)),
+                    hold_steps=(steps-int(steps*0.25)), lr=lr, val_set_hrs=val_set_hrs)
 
         # Sequence 3
         logging.info("#"*50 + "\nStarting training sequence 3...\n" + "#"*50)
@@ -320,8 +320,8 @@ class Model(nn.Module):
                     false_positive_val_data=false_positive_val_data,
                     max_steps=steps,
                     negative_weight_schedule=weights,
-                    val_steps=val_steps, warmup_steps=val_steps,
-                    hold_steps=val_steps, lr=lr, val_set_hrs=val_set_hrs)
+                    val_steps=val_steps, warmup_steps=(steps-int(steps*0.25)),
+                    hold_steps=(steps-int(steps*0.25)), lr=lr, val_set_hrs=val_set_hrs)
 
         # Merge best models
         logging.info("Merging checkpoints above the 90th percentile into single model...")
